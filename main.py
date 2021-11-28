@@ -75,7 +75,9 @@ else:
 
 
 report_id=r_json['id']
+status=r_json['status']
 print("Report id",report_id,r_json['status'])
+
 
 # wait 30sec, then check status. If 
 
