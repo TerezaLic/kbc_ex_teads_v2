@@ -40,6 +40,10 @@ print('Reading config:','from:',params['start_date'],'to:',params['end_date'])
 print('Dimensios requested:',params['dimensions_list'])
 print('Metrics requested:',params['metrics_list'])
 
+#input to be converted to list
+dimensions_list_str=params['dimensions_list']
+metrics_list_str=params['metrics_list'] 
+
 body={
 "filters": {
   "date": {
@@ -48,8 +52,8 @@ body={
       "timezone": "Europe/Berlin"
   }
 },
-"dimensions": params['dimensions_list'],
-"metrics": params['metrics_list'],
+"dimensions": dimensions_list_str.split(','),
+"metrics": metrics_list_str.split(','),
 #"emails": params['email'],
 "format": "csv"
 }
