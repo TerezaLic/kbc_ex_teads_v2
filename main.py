@@ -36,6 +36,9 @@ url = "https://api.teads.tv/v1/analytics/custom"
 #user_token="user_token"
 
 ######### prepare the request #######################
+print('Reading config:','from:',params['start_date'],'to:',params['end_date'],',',params['email'])
+print('Dimensios requested:',params['dimensions_list'])
+print('Metrics requested:',params['metrics_list'])
 
 body={
 "filters": {
@@ -51,7 +54,7 @@ body={
 "format": "csv"
 }
 
-headers={'Authorization': params['user_token'],
+headers={'Authorization': params['#user_token'],
                        'Content-Type': 'application/json'}
 
 ######### API CALL : initiate Processing report  #######################
