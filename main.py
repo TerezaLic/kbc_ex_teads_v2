@@ -107,7 +107,12 @@ if data.status_code == 200:
         df = pd.read_csv(url_download)
         df.head()
 
-        df.to_csv('/data/in/tables/TEADS_analytics.csv')
+        df.to_csv('in/tables/TEADS_analytics.csv')
+
+        
+        # Create output table (Tabledefinition - just metadata)
+        table = df.create_out_table_definition('TEADS_analytics.csv')
+        df.write_manifest(table)
        
         print("File downloaded")    
 
