@@ -106,7 +106,7 @@ data = requests.get(url_download,timeout=10)
 if data.status_code == 200:
         df = pd.read_csv(url_download, index_col=[0])
 
-        df.to_csv('TEADS_analytics4.csv')
+        df.to_csv('/data/out/tables/TEADS_analytics.csv')
 
     
        
