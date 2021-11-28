@@ -93,14 +93,17 @@ else:
 
 
 ######### DOWNLOAD REPORT FROM uri (S3)  #######################
+import pandas as pd
+
 data = requests.get(url_download,timeout=10)
 
 if data.status_code == 200:
-        with open('TEST_analytics.csv', 'w',newline='') as f:
-            writer = csv.writer(f)
-            for line in data.iter_lines():
-                writer.writerow(line.decode('utf-8').split(','))
-            print("File downloaded")    
+        df = pd.read_csv(url_download)
+        df.head()
+
+        df.to_csv('/data/in/tables/TEADS_analytics.csv')
+       
+        print("File downloaded")    
 
 else:
-            print("File download failed from".url_download)
+        print("File download failed from".url_download)
