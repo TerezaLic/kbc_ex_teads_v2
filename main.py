@@ -36,7 +36,7 @@ url = "https://api.teads.tv/v1/analytics/custom"
 #user_token="user_token"
 
 ######### prepare the request #######################
-print('Reading config:','from:',params['start_date'],'to:',params['end_date'],',',params['email'])
+print('Reading config:','from:',params['start_date'],'to:',params['end_date'])
 print('Dimensios requested:',params['dimensions_list'])
 print('Metrics requested:',params['metrics_list'])
 
@@ -50,7 +50,7 @@ body={
 },
 "dimensions": params['dimensions_list'],
 "metrics": params['metrics_list'],
-"emails": params['email'],
+#"emails": params['email'],
 "format": "csv"
 }
 
