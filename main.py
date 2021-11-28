@@ -104,11 +104,12 @@ import pandas as pd
 data = requests.get(url_download,timeout=10)
 
 if data.status_code == 200:
-        df = pd.read_csv(url_download)
-        df.head()
+        df = pd.read_csv(url_download, index_col=[0])
 
-        df.to_csv('in/tables/TEADS_analytics.csv')
+        df.to_csv('TEADS_analytics4.csv')
 
+    
+       
         print("File downloaded")    
 
 else:
