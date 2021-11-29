@@ -40,6 +40,9 @@ from dateutil.relativedelta import relativedelta
 from datetime import date
 import re
 
+start_param=params['start_date']
+end_param=params['end_date']
+
 def ago_do_date(ago):
     value, unit = re.search(r'(\d+) (\w+) ago', ago).groups()
     if not unit.endswith('s'):
@@ -48,16 +51,16 @@ def ago_do_date(ago):
     return(date.today() - delta)
 
 # start date    
-if 'ago' in params['start_date']:
-    startdate_calc=ago_do_date(params['start_date'])
+if 'ago' in start_param:
+    startdate_calc=ago_do_date(start_param)
 else:
-    startdate_calc=params['start_date']
+    startdate_calc=start_param
 
 # end date
-if 'ago' in params['end_date']:
-    enddate_calc=ago_do_date(params['end_date'])
+if 'ago' in end_param:
+    enddate_calc=ago_do_date(end_param)
 else:
-    enddate_calc=params['end_date']
+    enddate_calc=end_param
 
 ######### prepare the request #######################
 print('Reading config:','from:',startdate_calc,'to:',enddate_calc)
