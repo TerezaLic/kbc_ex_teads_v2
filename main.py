@@ -35,8 +35,32 @@ url = "https://api.teads.tv/v1/analytics/custom"
 #email_user= "email"
 #user_token="user_token"
 
+######### handle start / end date ###################
+from dateutil.relativedelta import relativedelta
+from datetime import date
+import re
+
+def ago_do_date(ago):
+    value, unit = re.search(r'(\d+) (\w+) ago', ago).groups()
+    if not unit.endswith('s'):
+        unit += 's'
+    delta = relativedelta(**{unit: int(value)})
+    return(date.today() - delta)
+
+# start date    
+if 'ago' in params['start_date']:
+    startdate_calc=ago_do_date(params['start_date'])
+else:
+    startdate_calc=params['start_date']
+
+# end date
+if 'ago' in params['end_date']:
+    enddate_calc=ago_do_date(params['end_date'])
+else:
+    enddate_calc=params['end_date']
+
 ######### prepare the request #######################
-print('Reading config:','from:',params['start_date'],'to:',params['end_date'])
+print('Reading config:','from:',startdate_calc,'to:',enddate_calc)
 print('Dimensios requested:',params['dimensions_list'])
 print('Metrics requested:',params['metrics_list'])
 
@@ -47,8 +71,8 @@ metrics_list_str=params['metrics_list']
 body={
 "filters": {
   "date": {
-      "start": params['start_date'],
-      "end": params['end_date'],
+      "start": startdate_calc,
+      "end": enddate_calc,
       "timezone": "Europe/Berlin"
   }
 },
