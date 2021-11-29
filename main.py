@@ -52,7 +52,7 @@ def ago_do_date(ago):
 
 # start date    
 if 'ago' in start_param:
-    startdate_calc=str(ago_do_date(sstart_param))
+    startdate_calc=str(ago_do_date(start_param))
 else:
     startdate_calc=str(start_param)
 
