@@ -52,15 +52,15 @@ def ago_do_date(ago):
 
 # start date    
 if 'ago' in start_param:
-    startdate_calc=ago_do_date(start_param)
+    startdate_calc=str(ago_do_date(sstart_param))
 else:
-    startdate_calc=start_param
+    startdate_calc=str(start_param)
 
 # end date
 if 'ago' in end_param:
-    enddate_calc=ago_do_date(end_param)
+    enddate_calc=str(ago_do_date(end_param))
 else:
-    enddate_calc=end_param
+    enddate_calc=str(end_param)
 
 ######### prepare the request #######################
 print('Reading config:','from:',startdate_calc,'to:',enddate_calc)
